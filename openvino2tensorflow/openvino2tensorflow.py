@@ -1229,8 +1229,13 @@ def convert(model_path,
                         perm.append(3)
                     else:
                         # TODO
-                        for idx, dim in enumerate(temp):
-                            perm.append(dim)
+                        perm.append(0)
+                        perm.append(3)
+                        perm.append(1)
+                        perm.append(2)
+                        perm.append(4)
+                        # for idx, dim in enumerate(temp):
+                        #     perm.append(dim)
                 else:
                     for idx, dim in enumerate(temp):
                         perm.append(dim)
@@ -1923,6 +1928,7 @@ def convert(model_path,
                     num_or_size_splits = tf_layers_dict[get_tf_edges_from(tf_edges, layer_id, 2)]
                 else:
                     num_or_size_splits = tf_layers_dict[get_tf_edges_from(tf_edges, layer_id, 2)]
+                axis = 4
 
                 def split_tensor(x, axis, num_split):
                     return tf.raw_ops.Split(axis=axis, value=x, num_split=num_split)
